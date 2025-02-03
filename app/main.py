@@ -78,7 +78,7 @@ def decode_bencode(bencoded_value):
                 entry_len = dict_elem_length(value)
             else:
                 entry_len = len(value)
-            decoded_dict[key.decode()] = value
+            decoded_dict[key] = value
             bencoded_value_copy = bencoded_value_copy[entry_len + 2:]
         return decoded_dict
         
@@ -105,7 +105,6 @@ def main():
         print(json.dumps(decode_bencode(bencoded_value), default=bytes_to_str))
     else:
         raise NotImplementedError(f"Unknown command {command}")
-
 
 if __name__ == "__main__":
     main()
